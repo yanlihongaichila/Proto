@@ -20,7 +20,7 @@ message UserInfo {
   string Username = 20;
   string Password = 30;
   string Mobile   = 40;
-  string Age      = 50;
+  int64 Age      = 50;
   Sex    Sex      = 60;
   string Address  = 70;
 }

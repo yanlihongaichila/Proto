@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package user;
+option go_package="github.com/yanlihongaichila/proto/user";
+
+
+//对数据的操作
+service User {
+  rpc GetUser          (GetUserRequest)           returns(GetUserResponse);
+  rpc GetUsers         (GetUsersRequest)          returns(GetUsersResponse);
+  rpc CreatedUser      (CreatedUserRequest)       returns(CreatedUserResponse);
+  rpc UpdatedUser      (UpdatedUserRequest)       returns(UpdatedUserResponse);
+  rpc DeletedUser      (DeletedUserRequest)       returns(DeletedUserResponse);
+  rpc GetUserByUsername(GetUserByUsernameRequest) returns(GetUserByUsernameResponse);
+}
+
+
+message UserInfo {
+  int64  ID       = 10;
+  string Username = 20;
+  string Password = 30;
+  string Mobile   = 40;
+  string Age      = 50;
+  Sex    Sex      = 60;
+  string Address  = 70;
+}
+
+//sex enum
+enum Sex{
+  Default = 0;
+  Man     = 10;
+  Woman   = 20;
+}
+
+//GetUser
+message GetUserRequest {
+  int64  ID  = 10;
+}
+
+message GetUserResponse {
+  UserInfo User = 10;
+}
+
+//GetUsers
+message GetUsersRequest {
+  int64  Offset  = 10;
+  int64  Limit  = 20;
+}
+
+message GetUsersResponse {
+ repeated UserInfo Users = 10;
+}
+
+//CreatedUser
+message CreatedUserRequest {
+  UserInfo User = 10;
+}
+
+message CreatedUserResponse {
+  UserInfo User = 10;
+}
+
+//UpdatedUser
+message UpdatedUserRequest {
+  UserInfo User = 10;
+}
+
+message UpdatedUserResponse {
+  UserInfo User = 10;
+}
+
+//DeletedUser
+message DeletedUserRequest {
+  int64  ID  = 10;
+}
+
+message DeletedUserResponse {}
+
+//GetUserByUsername
+message GetUserByUsernameRequest {
+  string Username = 10;
+}
+
+message GetUserByUsernameResponse {
+  UserInfo User = 10;
+}

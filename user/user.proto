@@ -20,7 +20,7 @@ message UserInfo {
   string Username = 20;
   string Password = 30;
   string Mobile   = 40;
-  int64 Age      = 50;
+  int64  Age      = 50;
   Sex    Sex      = 60;
   string Address  = 70;
 }
@@ -49,6 +49,7 @@ message GetUsersRequest {
 
 message GetUsersResponse {
  repeated UserInfo Users = 10;
+ int64    Total          = 20;
 }
 
 //CreatedUser

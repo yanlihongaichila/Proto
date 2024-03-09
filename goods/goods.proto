@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package goods;
+option go_package="github.com/yanlihongaichila/proto/goods";
+
+
+//对数据的操作
+service Goods {
+  rpc GetGoods      (GetGoodsRequest)       returns(GetGoodsResponse);
+  rpc GetGoodses    (GetGoodsesRequest)     returns(GetGoodsesResponse);
+  rpc CreatedGoods  (CreatedGoodsRequest)   returns(CreatedGoodsResponse);
+  rpc UpdatedGoods  (UpdatedGoodsRequest)   returns(UpdatedGoodsResponse);
+  rpc DeletedGoods  (DeletedGoodsRequest)   returns(DeletedGoodsResponse);
+}
+
+
+
+message GoodsInfo {
+  int64  ID        = 10;
+  string GoodsName = 20;
+  string Amount    = 30;
+  int64  Stock     = 40;
+  string Image     = 50;
+}
+
+//GetGoods
+message GetGoodsRequest {
+  int64  ID  = 10;
+}
+
+message GetGoodsResponse {
+  GoodsInfo Goods = 10;
+}
+
+//GetGoodses
+message GetGoodsesRequest {
+  int64  Offset  = 10;
+  int64  Limit  = 20;
+}
+
+message GetGoodsesResponse {
+ repeated GoodsInfo Goodses = 10;
+ int64    Total          = 20;
+}
+
+//CreatedGoods
+message CreatedGoodsRequest {
+  GoodsInfo Goods = 10;
+}
+
+message CreatedGoodsResponse {
+  GoodsInfo Goods = 10;
+}
+
+//UpdatedGoods
+message UpdatedGoodsRequest {
+  GoodsInfo Goods = 10;
+}
+
+message UpdatedGoodsResponse {
+  GoodsInfo Goods = 10;
+}
+
+//DeletedGoods
+message DeletedGoodsRequest {
+  int64  ID  = 10;
+}
+
+message DeletedGoodsResponse {}
